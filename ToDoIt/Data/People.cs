@@ -34,7 +34,7 @@ namespace ToDoIt.Data
 
         public void AddPerson(string firstName, string lastName)
         {
-            Array.Resize(ref people, (people.Length));
+            Array.Resize(ref people, (people.Length+1));
             people[(people.Length - 1)] = new Person(PersonSequencer.IncrementId(), firstName, lastName);
         }
 

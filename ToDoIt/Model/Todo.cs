@@ -16,5 +16,10 @@ namespace ToDoIt.Model
             this.description = description;
             done = false;
         }
+
+        public int GetId()
+        {
+            return (todoId);
+        }
     }
 }
