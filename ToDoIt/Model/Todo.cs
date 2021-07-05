@@ -7,8 +7,9 @@ namespace ToDoIt.Model
     public class Todo
     {
         private readonly int todoId;
-        private string description, assignee;
+        private string description;
         private bool done;
+        private Person assignee;
 
         public Todo(int todoId, string description)
         {
@@ -21,5 +22,17 @@ namespace ToDoIt.Model
         {
             return (todoId);
         }
+
+        public bool GetDoneStatus()
+        {
+            return (done);
+        }
+
+        public Person GetAssignee()
+        {
+            return assignee;
+        }
+
+        //public void SetAssignee()
     }
 }

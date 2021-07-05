@@ -43,5 +43,64 @@ namespace ToDoIt.Data
             toDoItems = new Todo[0];
         }
 
+        public Todo[] FindByDoneStatus(bool doneStatus)
+        {
+            int i;
+            Todo[] result = new Todo[toDoItems.Length];
+            foreach(Todo t in toDoItems)
+            {
+                if (t.GetDoneStatus() == doneStatus)
+                {
+                    result[i++] = t;
+                }
+            }
+            Array.Resize(ref toDoItems, i);
+            return result;
+        }
+
+        public Todo[] FindByAssignee(int personId)
+        {
+            int i;
+            Todo[] result = new Todo[toDoItems.Length];
+            foreach (Todo t in toDoItems)
+            {
+                if (t.GetAssignee().GetId() == personId)
+                {
+                    result[i++] = t;
+                }
+            }
+            Array.Resize(ref toDoItems, i);
+            return result;
+        }
+
+        public Todo[] FindByAssignee(Person p)
+        {
+            int i;
+            Todo[] result = new Todo[toDoItems.Length];
+            foreach (Todo t in toDoItems)
+            {
+                if (Equals(t.GetAssignee() , p))
+                {
+                    result[i++] = t;
+                }
+            }
+            Array.Resize(ref toDoItems, i);
+            return result;
+        }
+
+        public Todo[] FindByUnAssignedToDoItems()
+        {
+            int i;
+            Todo[] result = new Todo[toDoItems.Length];
+            foreach (Todo t in toDoItems)
+            {
+                if (t.GetAssignee() == null)
+                {
+                    result[i++] = t;
+                }
+            }
+            Array.Resize(ref toDoItems, i);
+            return result;
+        }
     }
 }
