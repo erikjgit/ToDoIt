@@ -16,7 +16,7 @@ namespace ToDoIt.Data
 
         public static void Reset()
         {
-            personId = 0;
+            toDoId = 0;
         }
     }
 }
