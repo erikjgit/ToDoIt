@@ -5,7 +5,7 @@ using ToDoIt.Model;
 
 namespace ToDoIt.Data
 {
-    class People
+    public class People
     {
         Person[] people = new Person[0];
 
@@ -32,16 +32,38 @@ namespace ToDoIt.Data
             return (null);
         }
 
-        public void AddPerson(string firstName, string lastName)
+        public Person AddPerson(string firstName, string lastName)
         {
             Array.Resize(ref people, (people.Length+1));
-            people[(people.Length - 1)] = new Person(PersonSequencer.IncrementId(), firstName, lastName);
+            Person newPerson = new Person(PersonSequencer.IncrementId(), firstName, lastName);
+            people[(people.Length - 1)] = newPerson;
+            return newPerson;
         }
 
         public void Clear()
         {
             people = new Person[0];
+            PersonSequencer.Reset();
         }
 
+        public void RemovePerson(int personId)
+        {
+            foreach (Person p in people)
+            {
+                if (personId == p.GetId())
+                {
+                    Person[] newPeople = new Person[(people.Length - 1)];
+                    int j = 0;
+                    for (int i = 0; i < people.Length; i++)
+                    {
+                        if (!(Equals(p, people[i])))
+                        {
+                            newPeople[j++] = people[i];
+                        }
+                    }
+                    people = newPeople;
+                }
+            }
+        }
     }
 }

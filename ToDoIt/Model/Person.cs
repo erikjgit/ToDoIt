@@ -7,7 +7,6 @@ namespace ToDoIt.Model
     public class Person
     {
         private readonly int personId;
-//        public int PersonId { get; set; }
         private string firstName, lastName;
 
         public Person(int personId, string firstName, string lastName)
@@ -20,6 +19,15 @@ namespace ToDoIt.Model
         public int GetId()
         {
             return (personId);
+        }
+
+        public string GetFirstName()
+        {
+            return firstName;
+        }
+        public string GetLastName()
+        {
+            return lastName;
         }
     }
 }

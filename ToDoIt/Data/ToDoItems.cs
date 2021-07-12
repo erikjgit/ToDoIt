@@ -5,7 +5,7 @@ using ToDoIt.Model;
 
 namespace ToDoIt.Data
 {
-    class ToDoItems
+    public class ToDoItems
     {
         Todo[] toDoItems = new Todo[0];
 
@@ -45,7 +45,7 @@ namespace ToDoIt.Data
 
         public Todo[] FindByDoneStatus(bool doneStatus)
         {
-            int i;
+            int i=0;
             Todo[] result = new Todo[toDoItems.Length];
             foreach(Todo t in toDoItems)
             {
@@ -60,7 +60,7 @@ namespace ToDoIt.Data
 
         public Todo[] FindByAssignee(int personId)
         {
-            int i;
+            int i=0;
             Todo[] result = new Todo[toDoItems.Length];
             foreach (Todo t in toDoItems)
             {
@@ -75,7 +75,7 @@ namespace ToDoIt.Data
 
         public Todo[] FindByAssignee(Person p)
         {
-            int i;
+            int i=0;
             Todo[] result = new Todo[toDoItems.Length];
             foreach (Todo t in toDoItems)
             {
@@ -90,7 +90,7 @@ namespace ToDoIt.Data
 
         public Todo[] FindByUnAssignedToDoItems()
         {
-            int i;
+            int i=0;
             Todo[] result = new Todo[toDoItems.Length];
             foreach (Todo t in toDoItems)
             {
@@ -101,6 +101,26 @@ namespace ToDoIt.Data
             }
             Array.Resize(ref toDoItems, i);
             return result;
+        }
+
+        public void RemoveTodo(int toDoId)
+        {
+            foreach (Todo t in toDoItems)
+            {
+                if (toDoId==t.GetId())
+                {
+                    Todo[] newTodo = new Todo[(toDoItems.Length - 1)];
+                    int j = 0;
+                    for (int i = 0; i < toDoItems.Length; i++)
+                    {
+                        if (!(Equals(t, toDoItems[i])))
+                        {
+                            newTodo[j++] = toDoItems[i];
+                        }
+                    }
+                    toDoItems = newTodo;
+                }
+            }
         }
     }
 }

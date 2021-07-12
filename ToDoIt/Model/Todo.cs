@@ -22,17 +22,22 @@ namespace ToDoIt.Model
         {
             return (todoId);
         }
-
+        public string GetDescription()
+        {
+            return description;
+        }
         public bool GetDoneStatus()
         {
             return (done);
         }
-
+        public void SetAssignee(Person assignee)
+        {
+            this.assignee = assignee;
+        }
         public Person GetAssignee()
         {
             return assignee;
         }
 
-        //public void SetAssignee()
     }
 }
